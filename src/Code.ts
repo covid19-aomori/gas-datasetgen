@@ -14,7 +14,7 @@ function datasetgen(): void {
   s3.putObject(
     BUCKET_NAME,
     'data.json',
-    Utilities.newBlob(data, "text/csv", "UTF-8"),
+    Utilities.newBlob(data, 'text/json', 'UTF-8'),
     { logRequests:true }
   )
 }
