@@ -30,7 +30,7 @@ export class JSONGenerator {
   }
 
   public genPatient(): string {
-    const data:{ リリース日: string, 居住地: string, 性別: "男性" | '女性', 年代: string, 退院: null | '○', date: string}[] = []
+    const data:{ リリース日: string, 居住地: string, 性別: "男性" | '女性', 年代: string, 退院: null | '○', date: string, source: string }[] = []
 
     const lastRow = this.patientSheet.getLastRow()
     for (let i = 2; i <= lastRow; i++) {
@@ -40,7 +40,8 @@ export class JSONGenerator {
         年代: this.patientSheet.getRange(i, 3).getValue(),
         性別: this.patientSheet.getRange(i, 4).getValue(),
         退院: this.patientSheet.getRange(i, 5).getValue() ? '○' : null,
-        date: this.formatDate(this.patientSheet.getRange(i, 6).getValue())
+        date: this.formatDate(this.patientSheet.getRange(i, 6).getValue()),
+        source: this.patientSheet.getRange(i, 7).getValue()
       })
     }
 

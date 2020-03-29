@@ -7,6 +7,7 @@ export type Patient = {
     性別: '男性' | '女性'
     退院: null | '○'
     date: string
+    source: string
   }[]
 }
 
