@@ -26,7 +26,7 @@ export class JSONGenerator {
       "inspections_summary": ${this.genInspectionsSummary()},
       "inspection_persons": ${this.genInspectionPerson()},
       "inspection_status_summary": ${this.genInspectionStatusSummary()}
-    }`
+    }`.trim()
   }
 
   public genPatient(): string {
@@ -39,7 +39,7 @@ export class JSONGenerator {
         居住地: this.patientSheet.getRange(i, 2).getValue(),
         年代: this.patientSheet.getRange(i, 3).getValue(),
         性別: this.patientSheet.getRange(i, 4).getValue(),
-        退院: this.patientSheet.getRange(i, 5).getValue ? '○' : null,
+        退院: this.patientSheet.getRange(i, 5).getValue() ? '○' : null,
         date: this.formatDate(this.patientSheet.getRange(i, 6).getValue())
       })
     }
