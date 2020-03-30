@@ -61,10 +61,12 @@ export class JSONGenerator {
       const date = this.formatDate(this.otherSheet.getRange(i, 1).getValue())
       const positive = this.otherSheet.getRange(i, 7).getValue()
 
-      data.push({
-        日付: date,
-        小計: positive
-      })
+      if (positive !== '') {
+        data.push({
+          日付: date,
+          小計: positive
+        })
+      }
     }
 
     const result:PatientsSummary = {
@@ -87,9 +89,11 @@ export class JSONGenerator {
       // TODO: 現状項目がないので発生したら考える
       const other = 0
 
-      prefectures.push(today)
-      others.push(other)
-      labels.push(date)
+      if (today !== '') {
+        prefectures.push(today)
+        others.push(other)
+        labels.push(date)
+      }
     }
 
     const result:InspectionsSummary = {
@@ -113,8 +117,10 @@ export class JSONGenerator {
       const date = this.formatDate(this.otherSheet.getRange(i, 1).getValue(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
       const today = this.otherSheet.getRange(i, 5).getValue()
 
-      data.push(today)
-      labels.push(date)
+      if (today !== '') {
+        data.push(today)
+        labels.push(date)
+      }
     }
 
     const result:InspectionPerson = {
